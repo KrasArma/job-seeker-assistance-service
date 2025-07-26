@@ -1,0 +1,137 @@
+prompts:
+  search_agent:
+    hh_query_syntax: |
+      hh.ru search language supports:
+      - Quotes for exact match: "python developer"
+      - Operators AND, OR, NOT (or И, ИЛИ, НЕ)
+      - Parentheses for grouping: (python OR java) AND developer
+      - Minus for exclusion: -junior
+      - Support for Russian and English languages
+      - Example: ("python developer" OR "разработчик python") AND -junior
+    
+    nl_to_hh_query: |
+      You are an assistant that translates user queries in natural language into search queries for hh.ru website.
+      Here is a brief instruction on query syntax:
+      {syntax}
+
+      Convert the following user query into a correct hh.ru search query using only valid operators and syntax.
+
+      User query: {user_text}
+
+      Only hh.ru search query:
+    
+    multilingual_queries_ru: |
+      User entered a query in Russian: "{user_text}"
+      
+      Generate 3-5 variants of this query in English for job search on hh.ru.
+      Consider IT industry context and popular terms.
+      
+      Return only query variants, each on a new line, without numbering.
+    
+    multilingual_queries_en: |
+      User entered a query in English: "{user_text}"
+      
+      Generate 3-5 variants of this query in Russian for job search on hh.ru.
+      Consider IT industry context and popular terms.
+      
+      Return only query variants, each on a new line, without numbering.
+    
+    query_to_filter: |
+      Convert the following user query to a structured filter for job search on hh.ru.
+      
+      User query: {query}
+      
+      Return JSON with fields:
+      - text: main search text
+      - experience: work experience (intern, junior, middle, senior)
+      - schedule: work schedule (fullDay, shift, flexible, remote, flyInFlyOut)
+      - employment: employment type (full, part, project, volunteer, probation)
+      - salary_from: minimum salary
+      - salary_to: maximum salary
+      - area: search region
+      - specialization: specialization
+      
+      Example response:
+      {{
+          "text": "Python developer",
+          "experience": "middle",
+          "schedule": "fullDay",
+          "employment": "full",
+          "salary_from": 100000,
+          "salary_to": 200000,
+          "area": "Moscow",
+          "specialization": "Programming, Development"
+      }}
+    
+    analyze_vacancy: |
+      Analyze the following vacancy and return structured information in JSON format.
+      
+      Vacancy data: {vacancy_data}
+      
+      Return JSON with fields:
+      - key_skills: key skills
+      - experience_level: experience level
+      - salary_range: salary range
+      - requirements: main requirements
+      - benefits: vacancy benefits
+      - match_score: match score (0-100)
+      
+      Example response:
+      {{
+          "key_skills": ["Python", "Django", "PostgreSQL"],
+          "experience_level": "middle",
+          "salary_range": "150000-250000",
+          "requirements": "Python work experience 3+ years",
+          "benefits": "Remote work, flexible schedule",
+          "match_score": 85
+      }}
+    
+    search_suggestions_ru: |
+      Based on user query in Russian, generate suggestions for improving job search.
+      
+      User query: {user_query}
+      
+      Return JSON with fields:
+      - alternative_queries_ru: alternative queries in Russian
+      - alternative_queries_en: alternative queries in English
+      - related_keywords_ru: related keywords in Russian
+      - related_keywords_en: related keywords in English
+      - search_tips_ru: search tips in Russian
+      - search_tips_en: search tips in English
+      - filters_suggestions: filter suggestions
+      
+      Example response:
+      {{
+          "alternative_queries_ru": ["Python разработчик", "Программист Python"],
+          "alternative_queries_en": ["Python developer", "Python programmer"],
+          "related_keywords_ru": ["Django", "Flask", "FastAPI"],
+          "related_keywords_en": ["Django", "Flask", "FastAPI"],
+          "search_tips_ru": "Попробуйте добавить технологии в запрос",
+          "search_tips_en": "Try adding technologies to your search query",
+          "filters_suggestions": ["Удаленная работа", "Москва"]
+      }}
+    
+    search_suggestions_en: |
+      Based on user query in English, generate suggestions for improving job search.
+      
+      User query: {user_query}
+      
+      Return JSON with fields:
+      - alternative_queries_ru: alternative queries in Russian
+      - alternative_queries_en: alternative queries in English
+      - related_keywords_ru: related keywords in Russian
+      - related_keywords_en: related keywords in English
+      - search_tips_ru: search tips in Russian
+      - search_tips_en: search tips in English
+      - filters_suggestions: filter suggestions
+      
+      Example response:
+      {{
+          "alternative_queries_ru": ["Python разработчик", "Программист Python"],
+          "alternative_queries_en": ["Python developer", "Python programmer"],
+          "related_keywords_ru": ["Django", "Flask", "FastAPI"],
+          "related_keywords_en": ["Django", "Flask", "FastAPI"],
+          "search_tips_ru": "Попробуйте добавить технологии в запрос",
+          "search_tips_en": "Try adding technologies to your search query",
+          "filters_suggestions": ["Удаленная работа", "Москва"]
+      }} 

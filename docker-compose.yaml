@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: hhuser
+      POSTGRES_PASSWORD: hhpassword
+      POSTGRES_DB: hhdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8081:8000"  
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+asyncpg://hhuser:hhpassword@db:5432/hhdb
+
+  frontend:
+    build: ./frontend/react-app
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  pgdata: 

@@ -1,0 +1,10 @@
+fastapi
+python-multipart
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+jinja2
+requests
+psycopg2-binary
+python-dotenv
+PyYAML 

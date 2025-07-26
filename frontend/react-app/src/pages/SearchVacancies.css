@@ -1,0 +1,139 @@
+.search-vacancies-root {
+  display: flex;
+  min-height: 100vh;
+  background: #f7f7fa;
+}
+
+.side-menu {
+  width: 56px;
+  background: #222;
+  color: #fff;
+  transition: width 0.2s;
+  position: relative;
+  z-index: 2;
+  box-shadow: 2px 0 8px #0001;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.side-menu.open {
+  width: 180px;
+}
+.menu-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  margin: 12px 0 12px 12px;
+  cursor: pointer;
+}
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  width: 100%;
+}
+.menu-content button {
+  background: none;
+  border: none;
+  color: #fff;
+  text-align: left;
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.menu-content button:hover {
+  background: #444;
+}
+
+.search-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.search-bar-block {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px #0002;
+  padding: 32px 32px 24px 32px;
+  min-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.search-bar-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.search-mode-btn, .params-btn, .search-btn {
+  background: #f0f0f7;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin: 0 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.search-mode-btn:hover, .params-btn:hover, .search-btn:hover {
+  background: #e0e0ef;
+}
+.search-btn {
+  font-size: 1.2rem;
+  background: #4f8cff;
+  color: #fff;
+  font-weight: bold;
+}
+.search-btn:hover {
+  background: #2563eb;
+}
+.search-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1.1rem;
+  margin-top: 8px;
+  outline: none;
+  transition: border 0.15s;
+}
+.search-input:focus {
+  border: 1.5px solid #4f8cff;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #0005;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.modal-window {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 24px 24px 24px;
+  min-width: 320px;
+  box-shadow: 0 4px 32px #0003;
+  position: relative;
+}
+.confirm-btn {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background 0.15s;
+}
+.confirm-btn:hover {
+  background: #2563eb;
+} 
